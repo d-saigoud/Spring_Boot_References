@@ -108,6 +108,21 @@ public class StudentRepository {
 
 	}
 
+	public void someDummyOperation() {
+		//Database Operation 1 - Retrieve Student
+		Student student = entityManager.find(Student.class, 20001L);
+
+		//Database Operation 2 - Retrieve Passport
+		Passport passport = student.getPassport();
+
+		//Database Operation 3 - Update Passport
+		passport.setNumber("M123456");
+
+
+		//Database Operation 4 - Update Student
+		student.setName(student.getName() + " - Updated");
+	}
+
 
 
 

@@ -1,6 +1,7 @@
 package com.sai.jpa.hibernate.jpahibernateadvancedemo1.repository;
 
 import com.sai.jpa.hibernate.jpahibernateadvancedemo1.JpaHibernateAdvanceDemo1Application;
+import com.sai.jpa.hibernate.jpahibernateadvancedemo1.entity.Passport;
 import com.sai.jpa.hibernate.jpahibernateadvancedemo1.entity.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,14 +29,27 @@ public class StudentRepositoryTest {
 
 	@Autowired
 	EntityManager em;
-	
+
 	@Test
+	public void someTest() {
+        repository.someDummyOperation();
+    }
+
+    @Test
     @Transactional
 	public void retrieveStudentAndPassportDetails() {
 		Student student = em.find(Student.class, 20001L);
 		logger.info("Student -> {}", student);
 		logger.info("Student -> Passport -> {}", student.getPassport());
 	}
+
+    @Test
+    @Transactional
+    public void retrievePassportAndAssociatedStudentDetails() {
+        Passport passport = em.find(Passport.class, 40001L);
+        logger.info("Passport -> {}", passport);
+        logger.info("Passport -> Student -> {}", passport.getStudent());
+    }
 
 
 }
